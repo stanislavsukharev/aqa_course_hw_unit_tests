@@ -10,4 +10,4 @@ let nn = String(n) + String(n);
 
 let nnn = String(n) + String(n) + String(n);
 
-console.log(n + nn + nnn);
+console.log(n + Number(nn) + Number(nnn));
