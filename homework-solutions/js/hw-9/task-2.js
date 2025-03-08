@@ -14,23 +14,34 @@ const characters = [
 ];
 
 function addCharacter(character) {
-  // Ваш код
+  if (typeof character.name !== 'string' || typeof character.age !== 'number') {
+    throw new Error();
+  }
+  characters.push(character);
 }
 
 function getCharacter(name) {
-  // Ваш код
+  return characters.find((character) => character.name === name);
 }
 
 function getCharactersByAge(minAge) {
-  // Ваш код
+  if (typeof minAge !== 'number') {
+    throw new Error();
+  }
+  return characters.filter((character) => character.age >= 40);
 }
 
 function updateCharacter(name, newCharacter) {
-  // Ваш код
+  const character = getCharacter(name);
+  if (!character) throw new Error();
+  Object.assign(character, newCharacter);
 }
 
+/* 5. Напишите функцию для удаления персонажа removeCharacter(name) (Реализовать через splice, индекс персонажа искать методом findInxex) */
 function removeCharacter(name) {
-  // Ваш код
+  const index = characters.findIndex((character) => character.name === name);
+  if (index === -1) throw new Error();
+  characters.splice(index, 1);
 }
 
 export { characters, addCharacter, updateCharacter, getCharacter, getCharactersByAge, removeCharacter };
