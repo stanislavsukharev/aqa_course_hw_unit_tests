@@ -1,11 +1,18 @@
 /*
  1. Создайте объект qa с полями name, age, salary и методом getInfo(greetingsWord),
     который будет возвращать строку вида: 
-    ${greetingsWord}, my name is ${name}, i'm ${age} and my salary is ${salary}. 
+    ${greetingsWord}, my name is ${name}, I'm ${age} and my salary is ${salary}. 
     Значения в строке должны ссылаться на контекст ЭТОГО ОБЪЕКТА, без подмен.
 */
 
-let qa;
+let qa = {
+  name: 'Stani',
+  age: '20',
+  salary: '5000',
+  getInfo(greetingsWord) {
+    return `${greetingsWord}, my name is ${this.name}, I'm ${this.age} and my salary is ${this.salary}`;
+  },
+};
 
 /*
  2. Changing the context
@@ -15,16 +22,20 @@ let qa;
   - Вызовите метод getInfo объекта qa c контекстом вызова объекта anotherQa с помощью метода apply()
  */
 
-let anotherQa;
-
 // Используйте bind с greetingWord "Hello"
-let bindResult;
+let anotherQa = {
+  name: 'Joe',
+  age: 30,
+  salary: 70000,
+};
+
+let bindResult = qa.getInfo.bind(anotherQa)('Hello');
 
 // Используйте call с greetingWord "Hi"
-let callResult;
+let callResult = qa.getInfo.call(anotherQa, 'Hi');
 
 // Используйте apply с greetingWord "Hey"
-let applyResult;
+let applyResult = qa.getInfo.apply(anotherQa, ['Hey']);
 
 /*
  3. Closures
@@ -38,7 +49,13 @@ let applyResult;
 */
 
 function createCounter() {
-  // Ваш код
+  let count = 0;
+
+  return function() {
+    count++;
+    console.log(`Function was called ${count} times`);
+    return count;
+  };
 }
 
 const functionCallCounter = createCounter();
