@@ -12,6 +12,7 @@
    console.log(emp1.firstName); // "John"
    emp1.salary = 3100;
    console.log(emp1.age); // 3100
+   
 5. Создайте класс Company с полями:
    title — название компании (строка).
    phone — телефон компании (число).
