@@ -29,10 +29,11 @@ type UserType = typeof QA;
 type OptionalEmployee = Partial<IEmployee>;
 
 /* 6. Создайте тип, который будет содержать поля name и salary из интерфейса IEmployee */
+type NameAndSalary = Pick<IEmployee, 'name' | 'salary'>;
 
 /* 7. Создайте тип, который будет держать все поля из интерфейса IEmployee, кроме isManager */
+type WithoutIsManager = Omit<IEmployee, 'isManager'>;
 
-type NameAndSalary = Pick<IEmployee, 'name' | 'salary'>;
 
 /* 8. Создайте тип, который будет содержать все поля из интерфейса IEmployee и сделает их неизменяемыми (readonly) */
 
