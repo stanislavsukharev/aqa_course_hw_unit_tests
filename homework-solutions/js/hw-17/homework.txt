@@ -28,5 +28,3 @@
 
   9. Xpath: используя за основу селектор //*[@id='submit'] найти элемент body 
     //*[@id='submit']/ancestor::body
-
-
